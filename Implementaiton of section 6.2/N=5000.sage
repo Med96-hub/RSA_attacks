@@ -66,7 +66,7 @@ print('\n')
 # To verify that e*r-x*phi=s, the difference e*r-x*phi-s must be zero
 print('e*r-x*phi-s=',e*r-x*phi-s)
 print('\n')
-# To compute the exponents: alpha,delta,epsilon,gamma
+# To compute the exponents: alpha,delta,beta,gamma
 
 alpha=numerical_approx(log(e)/log(N),digits=4); 
 delta=numerical_approx(log(r)/log(N),digits=4);
