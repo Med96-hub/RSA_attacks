@@ -29,10 +29,10 @@ p0=floor(sqrt(N))
 print('p0=',p0)
 print('\n')
 # To compute \tilde{q}
-q0=floor(N/p0)
+q0=floor(sqrt(N))
 print('q0=',q0)
 print('\n')
-u=p+q-p0-q0
+u=p+q-2*floor(sqrt(N))
 print('u=',u)
 print('\n')
 
@@ -44,10 +44,10 @@ def rd(nbits, phi):
         if gcd(x, phi) == 1:
             return x
 	
-r=rd(1100,phi) 
+r=rd(1150,phi) 
 print('r=',r)
 print('\n')
-s=rd(1090,phi)
+s=rd(1145,phi)
 print('s=',s)
 print('\n')
 e=Mod(s/r,phi).lift()
@@ -58,7 +58,7 @@ print('\n')
 x=(e*r-s)/phi
 print('x=',x)
 print('\n')
-b0=p0+q0-N-1
+b0=2*floor(sqrt(N))-N-1
 print('b0=',b0) 
 print('\n')
 
@@ -70,49 +70,51 @@ print('\n')
 
 alpha=numerical_approx(log(e)/log(N),digits=4); 
 delta=numerical_approx(log(r)/log(N),digits=4);
-epsilon=numerical_approx(log(abs(p-p0))/log(N),digits=4);
+beta=numerical_approx(log(abs(p-q))/log(N),digits=4);
 gamma=numerical_approx(log(abs(s))/log(N),digits=4);
 print('\n')
 
 print('alpha=',alpha)
 print('delta=',delta)
-print('epsilon=',epsilon)
+print('beta=',beta)
 print('gamma=',gamma)
 print('\n')
 
-#To check the conditions of Theorem 4
+#To check the conditions of Corollary 1
 
 
-print('To check that 1-0.5*gamma-2*epsilon<delta<1-0.5*gamma-sqrt(alpha*epsilon), the answer must be true')
+print('To check that 2-0.5*gamma-4*beta<delta<1-0.5*gamma-sqrt(alpha*(2*beta-0.5)), the answer must be true')
 print('\n')
-print(1-0.5*gamma-2*epsilon<delta<1-0.5*gamma-sqrt(alpha*epsilon))
+print(2-0.5*gamma-4*beta<delta<1-0.5*gamma-sqrt(alpha*(2*beta-0.5)))
 print('\n')
-print('1-0.5*gamma-2*epsilon=',1-0.5*gamma-2*epsilon)
+print('2-0.5*gamma-4*beta=',2-0.5*gamma-4*beta)
 print('\n')
 print('delta=',delta)
 print('\n')
-print('1-0.5*gamma-sqrt(alpha*epsilon)=',1-0.5*gamma-sqrt(alpha*epsilon))
+print('1-0.5*gamma-sqrt(alpha*(2*beta-0.5))=',1-0.5*gamma-sqrt(alpha*(2*beta-0.5)))
 print('\n')
 
-print('To check that epsilon<alpha<4*epsilon the answer must be true')
+print('To check that 2*beta-0.5<alpha<8*beta-2 the answer must be true')
 print('\n')
-print(epsilon<alpha<4*epsilon)
+print(2*beta-0.5<alpha<8*beta-2)
 print('\n')
-print('epsilon=',epsilon)
+print('2*beta-0.5=',2*beta-0.5)
 print('\n')
 print('alpha=',alpha)
 print('\n')
-print('4*epsilon=',4*epsilon)
+print('8*beta-2=',8*beta-2)
 print('\n')
 
-print('To check that |s|<inf(|er|,xu), the answer must be true')
+
+print('To check that |s|<inf(|er|,|xu|), the answer must be true')
 print('\n')
 print(abs(s)<min(abs(e*r),abs(x*u)))
 print('\n')
 print('|s|=',abs(s))
 print('\n')
-print('inf(|er|,xu)=',min(abs(e*r),abs(x*u)))
+print('inf(|er|,|xu|)=',min(abs(e*r),abs(x*u)))
 print('\n')
+
 
 
 # To compute the tuples (c,a,b) for (a,b) in E_c \cup F_c; for all c in the range [0,v]
@@ -187,11 +189,11 @@ print('\n')
 print('Bounds of roots are')
 Z1=floor(4*N^(alpha+delta-1))
 print('Z1=',Z1)
-Z2=floor(2*N^(epsilon))
+Z2=floor(2*N^(beta))
 print('Z2=',Z2)
 Z3=floor(N^(gamma))
 print('Z3=',Z3)
-Z4=floor(16*N^(alpha+delta+epsilon-1))
+Z4=floor(16*N^(alpha+delta+beta-1))
 print('Z4=',Z4)
 print('\n')
 
