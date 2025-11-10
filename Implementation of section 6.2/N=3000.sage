@@ -66,7 +66,7 @@ print('\n')
 # To verify that e*r-x*phi=s, the difference e*r-x*phi-s must be zero
 print('e*r-x*phi-s=',e*r-x*phi-s)
 print('\n')
-# To compute the exponents: alpha,delta,beta,gamma
+# To compute the exponents: alpha,delta,epsilon,gamma
 
 alpha=numerical_approx(log(e)/log(N),digits=4); 
 delta=numerical_approx(log(r)/log(N),digits=4);
@@ -189,11 +189,11 @@ print('\n')
 print('Bounds of roots are')
 Z1=floor(4*N^(alpha+delta-1))
 print('Z1=',Z1)
-Z2=floor(2*N^(beta))
+Z2=floor(0.25*N^(2*beta-0.5))
 print('Z2=',Z2)
 Z3=floor(N^(gamma))
 print('Z3=',Z3)
-Z4=floor(16*N^(alpha+delta+beta-1))
+Z4=2*Z1*Z2
 print('Z4=',Z4)
 print('\n')
 

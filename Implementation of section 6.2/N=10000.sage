@@ -7,7 +7,7 @@ def rdp(nbits):
         p = random_prime(2^nbits-1, false, 2^(nbits-1))
         return p
 		
-pp0=rdp(4500); qq0=rdp(4500); p=max(pp0,qq0); q=min(pp0,qq0)
+pp0=rdp(5000); qq0=rdp(5000); p=max(pp0,qq0); q=min(pp0,qq0)
 print('p=',p) 
 print('\n')
 print('the length of p is ',p.nbits())
@@ -44,10 +44,10 @@ def rd(nbits, phi):
         if gcd(x, phi) == 1:
             return x
 	
-r=rd(1611,phi) 
+r=rd(1811,phi) 
 print('r=',r)
 print('\n')
-s=rd(1601,phi)
+s=rd(1801,phi)
 print('s=',s)
 print('\n')
 e=Mod(s/r,phi).lift()
@@ -66,7 +66,7 @@ print('\n')
 # To verify that e*r-x*phi=s, the difference e*r-x*phi-s must be zero
 print('e*r-x*phi-s=',e*r-x*phi-s)
 print('\n')
-# To compute the exponents: alpha,delta,beta,gamma
+# To compute the exponents: alpha,delta,epsilon,gamma
 
 alpha=numerical_approx(log(e)/log(N),digits=5); 
 delta=numerical_approx(log(r)/log(N),digits=5);
@@ -189,11 +189,11 @@ print('\n')
 print('Bounds of roots are')
 Z1=floor(4*N^(alpha+delta-1))
 print('Z1=',Z1)
-Z2=floor(2*N^(beta))
+Z2=floor(0.25*N^(2*beta-0.5))
 print('Z2=',Z2)
 Z3=floor(N^(gamma))
 print('Z3=',Z3)
-Z4=floor(16*N^(alpha+delta+beta-1))
+Z4=2*Z1*Z2
 print('Z4=',Z4)
 print('\n')
 
